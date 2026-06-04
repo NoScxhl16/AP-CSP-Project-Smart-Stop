@@ -222,3 +222,13 @@ def findEfficiency():
         return 0
         
     return int((app.studentsPickedUp / app.totalStudentsAdded)*100)
+
+def pickedupStudents(bus):
+    for i in range(bus.capacity):
+        if len(app.students)>0:
+            app.students[0].visible=False
+            app.students.pop(0)
+            app.studentWaitTimes.pop(0)
+            app.studentsPickedUp+=1
+            
+    arrangeStudents()
