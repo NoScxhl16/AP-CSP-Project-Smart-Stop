@@ -19,6 +19,7 @@ AP Computer Science Principles
 Contributors
 
 Nolawi Mesfin
+and
 Woodrow Coombs
 
 Project Links
