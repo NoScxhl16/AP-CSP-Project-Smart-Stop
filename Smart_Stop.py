@@ -67,5 +67,21 @@ efficiencyLabel=Label('Efficiency: 0%',295,58,size=11)
 
 adviceLabel=Label('Add students and buses, then press Start.',200,200,size=10)
 
-
-
+# Arranges students into rows inside the waiting area so they remain visible and organized.
+def arrangeStudents():
+    for i in range(len(app.students)):
+        app.students[i].centerX=160+(i%10)*18
+        app.students[i].centerY=115+(i//10)*18
+    
+# Adds new students, starts their wait time at zero, and prevents the waiting area from passing 30 students.        
+def addStudents(amount):
+    for i in range(amount):
+        if len(app.students)<30:
+            student=Circle(160,115,6,fill='navy')
+            app.students.append(student)
+            app.studentWaitTimes.append(0)
+            app.totalStudentsAdded+=1
+        else: 
+            adviceLabel.value='Waiting area is full. Add a bus first.'    
+        
+    arrangeStudents()
