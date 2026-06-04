@@ -334,3 +334,15 @@ def onMousePress(mouseX,mouseY):
         resetSimulation()
         
     updateLabels()
+    # Runs the simulation while Start/Pause is active, moving buses and increasing wait times.    
+def onStep():
+    if app.simulationRunning==True:
+        updateBuses()
+        app.stepCounter+=1
+        
+        if app.stepCounter==30:
+            app.totalWaitTime+=1
+            app.stepCounter=0
+            updateWaitTimes()
+        
+        updateLabels()
