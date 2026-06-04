@@ -103,7 +103,7 @@ def createBus(capacity,speed):
     bus.centerX=-80-len(app.buses)*90
     app.buses.append(bus)
     
-    # Changes the weather each time the button is clicked and updates the background to match it.    
+# Changes the weather each time the button is clicked and updates the background to match it.    
 def changeWeather():
     if app.weather=='Clear':
         app.weather='Rain'
@@ -133,4 +133,14 @@ def changeWaitGoal():
         app.waitGoal=60
     else:
         app.waitGoal=30
+        
+# Finds the longest wait time so the risk meter can react to the student waiting the longest.        
+def findOldestWait():
+    oldest=0
+    
+    for wait in app.studentWaitTimes:
+        if wait>oldest:
+            oldest=wait
+            
+    return oldest
     
