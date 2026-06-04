@@ -85,3 +85,20 @@ def addStudents(amount):
             adviceLabel.value='Waiting area is full. Add a bus first.'    
         
     arrangeStudents()
+
+# Creates a bus with a chosen capacity and speed, then places it off screen before it drives in.    
+def createBus(capacity,speed):
+    bus = Group(
+        Rect(-80,230,65,30,fill='gold',border='black'),
+        Rect(-70,237,14,9,fill='skyBlue',border='black'),
+        Rect(-48,237,14,9,fill='skyBlue',border='black'),
+        Circle(-67,260,5,fill='black'),
+        Circle(-30,260,5,fill='black'),
+        Label('BUS',-48,253,size=8,bold=True)
+    )
+        
+    bus.capacity=capacity
+    bus.speed=speed
+    bus.pickedUp=False
+    bus.centerX=-80-len(app.buses)*90
+    app.buses.append(bus)
