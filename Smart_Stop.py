@@ -144,3 +144,74 @@ def findOldestWait():
             
     return oldest
     
+# Calculates one risk score using weather, wait time, crowd size, bus count, and pickup efficiency.        
+def calculateRisk(weatherType,waitSeconds,studentTotal,busTotal,efficiency):
+    riskScore=0
+    overGoalCount=0
+    
+    for wait in app.studentWaitTimes:
+        if wait>app.waitGoal:
+            overGoalCount+=1
+            
+    if weatherType=='Clear':
+        if overGoalCount>=5 and busTotal<=1:
+            riskScore+=15
+        else:
+            riskScore+=5
+        
+    elif weatherType=='Rain':
+        if overGoalCount>=1:
+            riskScore+=5
+        elif studentTotal>=20:
+            riskScore+=20
+        elif studentTotal>=10:
+            riskScore+=15
+        
+        else:
+            riskScore+=12
+  
+    elif weatherType=='Snow':
+        if overGoalCount>=1:
+            riskScore+=20
+        elif studentTotal>=15:
+            riskScore+=40
+        elif studentTotal>=10:
+             riskScore+=35
+        
+        else:
+            riskScore+=60
+            
+    elif weatherType=='Hot' or weatherType=='Cold':
+        if overGoalCount>=1:
+            riskScore+=5
+        elif studentTotal>=25:
+            riskScore+=20
+        elif studentTotal>=15:
+             riskScore+=15
+        
+        else:
+            riskScore+=15        
+                
+            
+    if busTotal==0 and studentTotal>=15:
+        riskScore+=10
+    elif busTotal==1 and studentTotal>20:
+        riskScore+=7
+    elif busTotal>=3:
+        riskScore-=5
+                
+    if efficiency < 30 and app.totalStudentsAdded > 15:
+        riskScore+=5
+    elif efficiency > 70:
+        riskScore-=5
+        
+    if overGoalCount>=10:
+        riskScore+=15
+    elif overGoalCount>=5:
+        riskScore+=8
+    
+        
+    if riskScore<0:
+        riskScore=0
+                
+    return riskScore
