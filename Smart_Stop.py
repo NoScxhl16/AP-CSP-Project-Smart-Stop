@@ -215,3 +215,10 @@ def calculateRisk(weatherType,waitSeconds,studentTotal,busTotal,efficiency):
         riskScore=0
                 
     return riskScore
+
+# Finds the percent of all students who have been picked up.        
+def findEfficiency():
+    if app.totalStudentsAdded==0:
+        return 0
+        
+    return int((app.studentsPickedUp / app.totalStudentsAdded)*100)
