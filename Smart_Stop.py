@@ -294,3 +294,43 @@ def updateLabels():
         riskLabel.fill='darkRed'
         riskBar.fill='darkRed'
         adviceLabel.value='Unsafe waiting conditions. More buses are needed.'
+        # Clears everything and brings the simulation back to the starting state.        
+def resetSimulation():
+    for student in app.students:
+        student.visible=False
+        
+    for bus in app.buses:
+        bus.visible=False
+        
+    app.students.clear()
+    app.studentWaitTimes.clear()
+    app.buses.clear()
+    
+    app.simulationRunning=False
+    app.totalWaitTime=0
+    app.weather='Clear'
+    app.waitGoal=30
+    app.totalStudentsAdded=0
+    app.studentsPickedUp=0
+    app.stepCounter=0
+    app.background='lightCyan'
+    riskBar.width=1
+    
+    updateLabels()
+
+# Checks which button the user clicked and runs the matching function.    
+def onMousePress(mouseX,mouseY):
+    if addStudentButton.hits(mouseX,mouseY):
+        addStudents(5)
+    elif addBusButton.hits(mouseX,mouseY):
+        createBus(app.busCapacity,2)
+    elif weatherButton.hits(mouseX,mouseY):
+        changeWeather()
+    elif goalButton.hits(mouseX,mouseY):
+        changeWaitGoal()
+    elif startButton.hits(mouseX,mouseY):
+        app.simulationRunning= not app.simulationRunning
+    elif resetButton.hits(mouseX,mouseY):
+        resetSimulation()
+        
+    updateLabels()
