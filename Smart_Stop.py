@@ -102,3 +102,35 @@ def createBus(capacity,speed):
     bus.pickedUp=False
     bus.centerX=-80-len(app.buses)*90
     app.buses.append(bus)
+    
+    # Changes the weather each time the button is clicked and updates the background to match it.    
+def changeWeather():
+    if app.weather=='Clear':
+        app.weather='Rain'
+        app.background='lightSteelBlue'
+        
+    elif app.weather=='Rain':
+        app.weather='Snow'
+        app.background='aliceBlue'
+        
+    elif app.weather=='Snow':
+        app.weather='Hot'
+        app.background='moccasin'
+        
+    elif app.weather=='Hot':
+        app.weather='Cold'
+        app.background='lavender'
+        
+    elif app.weather=='Cold':
+        app.weather='Clear'
+        app.background='lightCyan'
+        
+# Changes the wait goal between 30 45, and 60 seconds so the user can adjust the simulation.
+def changeWaitGoal():
+    if app.waitGoal==30:
+        app.waitGoal=45
+    elif app.waitGoal==45:
+        app.waitGoal=60
+    else:
+        app.waitGoal=30
+    
