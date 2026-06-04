@@ -38,6 +38,22 @@ Rect(135,180,130,15,fill='white',border='black')
 riskBar=Rect(135,180,1,15,fill='green')
 Label('Risk Meter',200,173,size=10)
 
+# Creates the buttons on the bottom for the main controls
+addStudentButton=Rect(10,310,85,28,fill='white',border='black')
+addBusButton=Rect(105,310,85,28,fill='white',border='black')
+weatherButton=Rect(200,310,85,28,fill='white',border='black')
+goalButton=Rect(295,310,85,28,fill='white',border='black')
+
+startButton=Rect(70,350,110,30,fill='lightGreen',border='black')
+resetButton=Rect(220,350,110,30, fill='fireBrick',border='black')
+
+# Creates the text on each button for what it does
+Label('+ Students',52,324,size=10,bold=True)
+Label('+ Bus',147,324,size=10,bold=True)
+Label('Weather',242,324,size=10,bold=True)
+Label('Wait Goal',337,324,size=10,bold=True)
+Label('Start/Pause',125,365,size=10,bold=True)
+Label('Reset',275,365,size=11,bold=True)
 
 
 
