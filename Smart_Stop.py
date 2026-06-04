@@ -55,5 +55,17 @@ Label('Wait Goal',337,324,size=10,bold=True)
 Label('Start/Pause',125,365,size=10,bold=True)
 Label('Reset',275,365,size=11,bold=True)
 
+# Creates labels that display live information about the simulation.
+studentLabel=Label('Students: 0',55,395,size=10)
+busLabel=Label('Buses: 0',135,395,size=10)
+weatherLabel=Label('Weather: Clear',230,395,size=10)
+riskLabel=Label('Risk: Low',335,395,size=10,fill='green')
+
+timeLabel=Label('Time: 0/30 sec',75,58,size=11)
+pickedUpLabel=Label('Picked Up: 0',180,58,size=11)
+efficiencyLabel=Label('Efficiency: 0%',295,58,size=11)
+
+adviceLabel=Label('Add students and buses, then press Start.',200,200,size=10)
+
 
 
