@@ -232,3 +232,15 @@ def pickedupStudents(bus):
             app.studentsPickedUp+=1
             
     arrangeStudents()
+
+def updateBuses():
+    for bus in app.buses:
+        bus.centerX +=bus.speed
+        
+        if bus.centerX>185 and bus.centerX < 215 and bus.pickedUp==False:
+            pickedupStudents(bus)
+            bus.pickedUp=True
+            
+        if bus.centerX>480:
+            bus.centerX=-80
+            bus.pickedUp=False
