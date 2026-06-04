@@ -23,6 +23,6 @@ Woodrow Coombs
 
 Project Links
 
-Google Site Portfolio: []
+Google Site Portfolio: [https://sites.google.com/view/smartstopportfolio/home?authuser=6](url)
 
-LinkedIn Showcase: []
+LinkedIn Showcase:  [https://www.linkedin.com/posts/nolawi-mesfin-622a03412_im-excited-to-share-my-ap-computer-science-activity-7468418251878854656-aP9s?utm_source=share&utm_medium=member_desktop&rcm=ACoAAGkn77oBCN6HNNKlU-o-y_1YIvyVZqyw9Pw](url)
