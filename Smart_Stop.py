@@ -244,3 +244,53 @@ def updateBuses():
         if bus.centerX>480:
             bus.centerX=-80
             bus.pickedUp=False
+
+# Adds one second to each student's wait time.
+def updateWaitTimes():
+    for i in range (len(app.studentWaitTimes)):
+        app.studentWaitTimes[i]+=1
+        
+# Updates all text labels, the risk bar, and the advice message on the screen.        
+def updateLabels():
+    oldestWait=findOldestWait()
+    efficiency=findEfficiency()
+    
+    riskScore=calculateRisk(app.weather,app.totalWaitTime,len(app.students),
+                            len(app.buses),efficiency)
+                            
+    studentLabel.value='Students: ' + str(len(app.students))
+    busLabel.value='Buses: '+str(len(app.buses))
+    weatherLabel.value='Weather: ' + app.weather
+    timeLabel.value='Time: ' + str(app.totalWaitTime) + ' / ' + str(app.waitGoal) + ' sec'
+    pickedUpLabel.value='Picked Up: ' + str(app.studentsPickedUp)
+    efficiencyLabel.value='Efficiency: ' + str(efficiency) + '%'
+    
+    barWidth=riskScore*2
+    
+    if barWidth<1:
+        barWidth=1
+    if barWidth>130:
+        barWidth=130
+    
+    riskBar.width=barWidth
+    
+    if riskScore<15:
+        riskLabel.value='Risk: Low'
+        riskLabel.fill='green'
+        riskBar.fill='green'
+        adviceLabel.value='Conditions are safe right now.'
+    elif riskScore<35:
+        riskLabel.value='Risk: Medium'
+        riskLabel.fill='orange'
+        riskBar.fill='orange'
+        adviceLabel.value='Some students are starting to wait too long. Add more buses.'
+    elif riskScore<55:
+        riskLabel.value='Risk: High'
+        riskLabel.fill='red'
+        riskBar.fill='red'
+        adviceLabel.value='Add buses to lower the crowd and wait time.'
+    else:
+        riskLabel.value='Risk: Critical'
+        riskLabel.fill='darkRed'
+        riskBar.fill='darkRed'
+        adviceLabel.value='Unsafe waiting conditions. More buses are needed.'
